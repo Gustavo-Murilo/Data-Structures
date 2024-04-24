@@ -1,3 +1,7 @@
+// College Assignament
+// Subject: Data Strcutures
+// Student: Gustavo Murilo Cavalcante Carvalho
+
 #include <iostream>
 
 using namespace std;
@@ -19,6 +23,9 @@ void displayList(Node*);
 void InsertBefore(Node*, int);
 void deleteNodebyValue(Node**, int);
 Node* searchNodebyValue(Node**, int);
+
+
+// ==================== FEITO EM SALA ====================
 
 int main(){
     Node* head = nullptr;
