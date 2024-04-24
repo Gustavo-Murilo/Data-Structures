@@ -20,7 +20,7 @@ void deleteNode(Node**, Node*);
 void displayList(Node*);
 
 // Exercícios
-void InsertBefore(Node*, int);
+void insertBefore(Node*, int);
 void deleteNodebyValue(Node**, int);
 Node* searchNodebyValue(Node**, int);
 
@@ -29,7 +29,6 @@ Node* searchNodebyValue(Node**, int);
 
 int main(){
     Node* head = nullptr;
-    displayList(head);
     cout << "=================================" << endl;
     insertEnd(&head, 0);
     insertEnd(&head, 1);
@@ -37,11 +36,29 @@ int main(){
     insertEnd(&head, 5);
     insertEnd(&head, 7);
     insertEnd(&head, 42);
-    // displayList(head);   
+    displayList(head);   
     // insertFront(&head, 13);
     // displayList(head);  
     // deleteNode(&head, head->ptrNext->ptrNext);
     // displayList(head); 
+
+    // ============== TESTES ==============
+    cout << endl;
+    cout << "============== TESTES ==============" << endl;
+    cout << "Inserindo o valor 25 antes do terceiro nó: " << endl;
+    Node* ptrThird = head->ptrNext->ptrNext;
+    insertBefore(ptrThird, 25);
+    displayList(head);
+    cout << endl;
+    
+    cout << "Inserindo o valor 666 antes de um nó de valor 25" << endl;
+    insertBefore(searchNodebyValue(&head, 25), 666);
+    displayList(head);
+    cout << endl;
+
+    cout << "Inserindo o valor 13 antes de um nó de valor 1" << endl;
+    insertBefore(searchNodebyValue(&ptrThird, 1), 13);
+    displayList(head);
 }
 
 Node* createNode(int iPayload){
