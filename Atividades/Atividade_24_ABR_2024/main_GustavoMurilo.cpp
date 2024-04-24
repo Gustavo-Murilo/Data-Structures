@@ -15,6 +15,7 @@ void insertAfter(Node*, int);
 void deleteNode(Node**, Node*);
 void displayList(Node*);
 
+// Exercícios
 void InsertBefore(Node*, int);
 void deleteNodebyValue(Node**, int);
 Node* searchNodebyValue(Node**, int);
@@ -146,11 +147,66 @@ void deleteNode(Node** head, Node* ptrDelete)
 
 // ============================ EXERCÍCIOS ============================
 
-// Exercício 1. Elaborar a função void InsertBefore(Node*, int);
+// Exercício 1. Elaborar a função void insertBefore(Node*, int);
+void insertBefore(Node* ptrLocation, int iData) {
+    if (ptrLocation == nullptr) {
+        cout << "O ponteiro fornecido é NULL" << endl;
+        return;
+    }
 
+    Node* ptrNew = createNode(iData);
+
+    // Altera os elementos "vizinhos" do novo nó
+    ptrNew->ptrPrev = ptrLocation->ptrPrev;
+    ptrNew->ptrNext = ptrLocation;
+    
+    // Altera os elementos "vizinhos" do nós que já estavam na lista
+    if (ptrLocation->ptrPrev != nullptr) {
+        ptrLocation->ptrPrev->ptrNext = ptrNew;
+    }
+    ptrLocation->ptrPrev = ptrNew;
+}
 
 // Exercício 2. Elaborar a função void deleteNodebyValue(Node**, int);
+void deleteNodebyValue(Node** ptrLocation, int iData) {
+    Node* ptrFound = searchNodebyValue(ptrLocation, iData);
+
+    if (ptrFound == nullptr) {
+        cout << "A lista não possui um nó com esse valor" << endl;
+        return;
+    }
+
+    deleteNode(ptrLocation, ptrFound);
+}
 
 
 // Exercício 3. Elaborar a função Node* searchNodebyValue(Node**, int);
+Node* searchNodebyValue(Node** ptrLocation, int iData) {
+    if (*ptrLocation == nullptr) {
+        cout << "Lista Vazia: não é possível procurar o nó" << endl;
+        return nullptr;
+    }
+    
+    Node* ptrUp = *ptrLocation;
+    Node* ptrDown = (*ptrLocation)->ptrPrev;
 
+    // Percorre a lista para frente em busca do nó
+    while (ptrUp != nullptr) {
+        if (ptrUp->iPayload == iData) {
+            return ptrUp; // Retorna o nó encontrado
+        }
+        ptrUp = ptrUp->ptrNext;
+    }
+
+    // Percorre a lista para trás em busca do nó
+    while (ptrDown != nullptr) {
+        if (ptrDown->iPayload == iData) {
+            return ptrDown; // Retorna o nó encontrado
+        }
+        ptrDown = ptrDown->ptrPrev;
+    }    
+
+    // Caso não ache o nó, informa o ocorrido e retorna NULL
+    cout << "Nó não encontrado" << endl;
+    return nullptr;
+}
