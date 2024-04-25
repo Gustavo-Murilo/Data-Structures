@@ -1,6 +1,8 @@
 // College Assignament
 // Subject: Data Strcutures
-// Student: Gustavo Murilo Cavalcante Carvalho
+// Students: 
+// - Gustavo Murilo Cavalcante Carvalho
+// - João Pedro Tambosi           
 
 #include <iostream>
 
