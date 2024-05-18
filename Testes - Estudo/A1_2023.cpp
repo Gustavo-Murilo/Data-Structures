@@ -26,7 +26,7 @@ int verificarTamanhoCiclo(Lista_Encadeada* stLista);   // Questão Extra
 void exibirLista(Lista_Encadeada* stLista);         // Opcional
 void inserirElementosArray(Lista_Encadeada* stLista, int* arriMatriculas, int szTamanho); // Opcional
 
-// Função principal (main)
+// Função principal (main)//* condition */* condition */
 int main() {
     // Teste do caminho ideal
     Lista_Encadeada* stMatriculas1 = criarLista();
